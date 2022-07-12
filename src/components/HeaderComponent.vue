@@ -1,7 +1,7 @@
 <template>
   <b-navbar sticky toggleable="lg" type="dark" variant="info">
     <b-navbar-brand href="#"
-      ><img style="height: 40px" src="https://prexle.com/wp-content/themes/prexle/images/logo.svg" alt="" srcset=""
+      ><img src="https://prexle.com/wp-content/themes/prexle/images/logo.svg" alt="" srcset=""
     /></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse class="" id="nav-collapse" is-nav>
@@ -57,5 +57,9 @@ export default {
 <style lang="scss">
 .nav-link.router-link-active {
   color: white !important;
+}
+.navbar-brand img {
+  height: 40px;
+  filter: brightness(0) invert(1);
 }
 </style>
