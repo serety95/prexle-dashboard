@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="info">
+  <b-navbar sticky toggleable="lg" type="dark" variant="info">
     <b-navbar-brand href="#"
       ><img style="height: 40px" src="https://prexle.com/wp-content/themes/prexle/images/logo.svg" alt="" srcset=""
     /></b-navbar-brand>

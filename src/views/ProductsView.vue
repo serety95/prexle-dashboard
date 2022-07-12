@@ -4,7 +4,10 @@
     <div class="container">
       <div class="row">
         <div v-for="card in cardsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
-          <ProductCard  :cardData="card"></ProductCard>
+          <ProductCard :cardData="card"></ProductCard>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
+          <div class="card">add product</div>
         </div>
       </div>
     </div>
@@ -123,3 +126,8 @@ export default {
   }),
 };
 </script>
+<style scoped >
+.card{
+    height: 500px;
+}
+</style>
