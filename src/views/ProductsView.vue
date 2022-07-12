@@ -3,7 +3,7 @@
     <h1>welcome to products</h1>
     <div class="container">
       <div class="row">
-        <div v-for="card in cardsList" v-bind:key="card._id" class="col-3 my-2">
+        <div v-for="card in cardsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
           <ProductCard  :cardData="card"></ProductCard>
         </div>
       </div>
