@@ -6,7 +6,7 @@
       <b-form @submit.prevent="submit">
         <b-row>
           <b-form-group
-          class="col-12 d-flex justify-content-center flex-column align-items-start"
+            class="col-12 d-flex justify-content-center flex-column align-items-start"
             :class="{ 'form-group--error': $v.email.$error }"
             id="input-group-1"
             label="Email address:"
@@ -19,9 +19,7 @@
               v-model.trim="$v.email.$model"
             ></b-form-input>
             <div class="error" v-if="!$v.email.required">Email is required</div>
-            <div class="error" v-if="!$v.email.email">
-              please enter a valid email
-            </div>
+            <div class="error" v-if="!$v.email.email">please enter a valid email</div>
           </b-form-group>
         </b-row>
         <b-row>
@@ -37,9 +35,7 @@
               placeholder="Enter your password"
               v-model.trim="$v.password.$model"
             ></b-form-input>
-            <div class="error" v-if="!$v.email.required">
-              password is required
-            </div>
+            <div class="error" v-if="!$v.email.required">password is required</div>
           </b-form-group>
         </b-row>
         <b-button
@@ -48,19 +44,17 @@
           variant="outline-primary"
           >Login</b-button
         >
-        <p class="typo__p" v-if="submitStatus === 'OK'">
-          Thanks for your submission!
-        </p>
-        <p class="typo__p" v-if="submitStatus === 'ERROR'">
-          Please fill the form correctly.
-        </p>
+
+        <p class="typo__p" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
         <p class="typo__p" v-if="submitStatus === 'PENDING'">Sending...</p>
+        <p>{{ submitStatus }}</p>
       </b-form>
     </div>
   </b-container>
 </template>
 <script>
 import { required, email } from "vuelidate/lib/validators";
+import userService from "../services/userService";
 export default {
   data() {
     return {
@@ -79,17 +73,20 @@ export default {
     },
   },
   methods: {
-    submit() {
+    async submit() {
       console.log("submit!");
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
       } else {
-        // do your submit logic here
-        this.submitStatus = "PENDING";
-        setTimeout(() => {
-          this.submitStatus = "OK";
-        }, 500);
+         this.submitStatus = "PENDING";
+        console.log(this.email, this.password);
+        const res = await userService.login({
+          email: this.email,
+          password: this.password,
+        });
+        console.log(res.data);
+        this.submitStatus = res.data.message;
       }
     },
   },
