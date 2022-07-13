@@ -79,15 +79,15 @@ export default {
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
       } else {
-         this.submitStatus = "PENDING";
+        this.submitStatus = "PENDING";
         console.log(this.email, this.password);
         const res = await userService.login({
           email: this.email,
           password: this.password,
         });
         console.log(res.data);
-        userService.setToken(res.data.data.token)
-        
+        userService.setToken(res.data.data.token);
+
         this.submitStatus = res.data.message;
       }
     },

@@ -1,8 +1,12 @@
 import axios from 'axios'
 
-
-export default (url ="https://fc-ecommerce-test.herokuapp.com/")=>{
+const lang =localStorage.getItem('lang') || 'en';
+export default (url ="https://fc-ecommerce-test.herokuapp.com")=>{
     return axios.create({
-        baseURL:url
+        baseURL:url,
+        headers: {
+            "Accept-Language": lang,
+            
+        }
     })
 }

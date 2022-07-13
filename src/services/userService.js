@@ -16,5 +16,9 @@ export default {
     getUserByToken() {
         let token = localStorage.getItem("token")
         return API().get('/me/profile', { headers: { 'x-auth-token': token } })
+    },
+    registerUser(user){
+        console.log(user)
+        return API().post('/signup',user)
     }
 }

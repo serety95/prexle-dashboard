@@ -12,9 +12,10 @@
       </b-navbar-nav>
       <b-navbar-nav class="ml-0">
         <b-nav-item-dropdown :text="user == null ? 'user' : user">
-          <b-dropdown-item to="/login">Login</b-dropdown-item>
-           <b-dropdown-item to="/profile">Profile</b-dropdown-item>
-          <b-dropdown-item @click="logout()">Logout</b-dropdown-item>
+          <b-dropdown-item v-if="!user" to="/login">Login</b-dropdown-item>
+          <b-dropdown-item v-if="!user" to="/register">Register</b-dropdown-item>
+          <b-dropdown-item v-if="user" to="/profile">Profile</b-dropdown-item>
+          <b-dropdown-item v-if="user" @click="logout()">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown right :text="selectedLang">
           <b-dropdown-item
@@ -31,26 +32,39 @@
   </b-navbar>
 </template>
 <script>
+import userService from "@/services/userService";
 export default {
-  mounted() {
+  async mounted() {
     console.log(`the component is now mounted.`);
-    console.log(this.user);
+    userService
+      .getUserByToken()
+      .then((res) => {
+        this.user = res.data.data.fullname;
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   },
   name: "HeaderComponent",
-  data: () => ({
-    selectedLang: "en",
-    langList: [
-      { displayName: "English", value: "en" },
-      { displayName: "Arabic", value: "ar" },
-    ],
-    user: null,
-  }),
+  data: function () {
+    const selectedLang = localStorage.getItem("lang") || "en";
+    return {
+      selectedLang: selectedLang,
+      langList: [
+        { displayName: "English", value: "en" },
+        { displayName: "Arabic", value: "ar" },
+      ],
+      user: null,
+    };
+  },
   methods: {
     changeLang(lang) {
       this.selectedLang = lang.value;
+      localStorage.setItem("lang", lang.value);
     },
     logout() {
       this.user = null;
+      localStorage.removeItem("token");
     },
   },
 };
