@@ -86,6 +86,8 @@ export default {
           password: this.password,
         });
         console.log(res.data);
+        userService.setToken(res.data.data.token)
+        
         this.submitStatus = res.data.message;
       }
     },

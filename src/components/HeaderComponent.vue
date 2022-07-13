@@ -13,6 +13,7 @@
       <b-navbar-nav class="ml-0">
         <b-nav-item-dropdown :text="user == null ? 'user' : user">
           <b-dropdown-item to="/login">Login</b-dropdown-item>
+           <b-dropdown-item to="/profile">Profile</b-dropdown-item>
           <b-dropdown-item @click="logout()">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown right :text="selectedLang">
