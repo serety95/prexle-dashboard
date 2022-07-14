@@ -1,8 +1,7 @@
 <template>
   <div v-if="user" class="container px-5">
-    <div class="row">
+    <div class="row welcome-card">
       <div class="col-12">
-        <h1>hello to profile</h1>
         <h2>welcome back {{ user.fullname }}</h2>
       </div>
     </div>
@@ -11,6 +10,9 @@
         <img class="avatar-img" src="https://www.jea.com/cdn/images/avatar/avatar-alt.svg" alt="" srcset="" />
       </div>
       <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 col-12 data-container">
+        <div class="row">
+          <h3 class="profile-title">profile Information</h3>
+        </div>
         <div class="row p-3">
           <div class="col-12 data-col">
             <span class="title">full name:</span>
@@ -71,19 +73,43 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.profile-card {
-  border: 1px solid grey;
+.welcome-card {
+
   border-radius: 15px;
+  padding: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  h2{
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+.profile-card {
+
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
   .data-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    .profile-title {
+      padding: 5px;
+      text-transform: capitalize;
+      font-weight: 600;
+    }
     .data-col {
       display: flex;
       justify-content: flex-start;
@@ -96,7 +122,7 @@ export default {
         padding-left: 5px;
         font-size: 18px;
         font-weight: 700;
-        color: rgba(0, 0, 0, 0.7);
+        color: rgba(0, 0, 0, 0.6);
       }
     }
   }
