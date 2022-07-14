@@ -9,7 +9,13 @@
             <b-col xl="6" lg="6" md="6" sm="12" cols="12">
               <div class="form-group">
                 <label for="">fullname:</label>
-                <input class="form-control" v-model.trim="fullname" type="text" />
+                <input
+                  required
+                  placeholder="enter your name"
+                  class="form-control"
+                  v-model.trim="fullname"
+                  type="text"
+                />
                 <small class="form-text text-muted" v-if="!$v.fullname.required">fullname is required</small>
                 <small class="form-text text-muted" v-if="!$v.fullname.minLength">min length is 6 chars</small>
               </div>
@@ -26,10 +32,11 @@
           <b-row>
             <b-col xl="6" lg="6" md="6" sm="12" cols="12">
               <div class="form-group">
-                <label for="">Password:</label>
+                <label for="password">Password:</label>
                 <input
+                  id="password"
                   required
-                  placeholder="Enter your password"
+                  placeholder="enter your password"
                   class="form-control"
                   v-model.trim="password"
                   type="password"
@@ -40,8 +47,9 @@
             </b-col>
             <b-col xl="6" lg="6" md="6" sm="12" cols="12">
               <div class="form-group">
-                <label for="">Confirm Password:</label>
+                <label for="confirmPassword">Confirm Password:</label>
                 <input
+                  id="confirmPassword"
                   required
                   placeholder="confirm your password"
                   class="form-control"
@@ -58,16 +66,24 @@
             </b-col>
           </b-row>
           <b-row>
-            <b-col> </b-col>
+            <b-col>
+              <b-form-group label="Gender:">
+                <b-form-radio
+                  :inline="true"
+                  v-for="genderOption in genderList"
+                  v-bind:key="genderOption.value"
+                  v-model="gender"
+                  name="genderOption"
+                  :value="genderOption.value"
+                  >{{ genderOption.displayText }}</b-form-radio
+                >
+              </b-form-group>
+            </b-col>
           </b-row>
           <b-row class="mt-4">
             <b-col class="mx-auto" xl="6" lg="6" md="6" sm="12" cols="12">
-              <b-button
-              class="w-100"
-                type="submit"
-                :disabled="submitStatus === 'ERROR' || submitStatus === 'PENDING'"
-                variant="outline-primary"
-                >Login</b-button
+              <b-button class="w-100" type="submit" :disabled="$v.$invalid" variant="outline-primary"
+                >Register</b-button
               >
             </b-col>
           </b-row>
@@ -91,6 +107,11 @@ export default {
       password: "",
       confirmPassword: "",
       gender: "",
+      genderList: [
+        { value: "M", displayText: "Male" },
+        { value: "F", displayText: "Female" },
+
+      ],
       submitStatus: null,
     };
   },
@@ -124,9 +145,9 @@ export default {
       } else {
         this.submitStatus = "PENDING";
         console.log(this.$v);
-        console.log(this.email, this.password, this.fullname);
+        console.log(this.email, this.password, this.fullname, this.gender);
         userService
-          .registerUser({ email: this.email, password: this.password, fullname: this.fullname })
+          .registerUser({ email: this.email, password: this.password, fullname: this.fullname, gender: this.gender })
           .then((res) => {
             console.log(res);
             this.submitStatus = res.data.message;

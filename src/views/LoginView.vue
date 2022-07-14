@@ -40,7 +40,7 @@
         </b-row>
         <b-button
           type="submit"
-          :disabled="submitStatus === 'ERROR' || submitStatus === 'PENDING'"
+          :disabled="$v.$invalid"
           variant="outline-primary"
           >Login</b-button
         >
