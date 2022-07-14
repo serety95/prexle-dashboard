@@ -74,31 +74,32 @@ export default {
 </script>
 <style scoped lang="scss">
 .welcome-card {
-
+  background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
   border-radius: 15px;
   padding: 15px;
   overflow: hidden;
   margin-top: 20px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px 0 rgba(50, 50, 95,0.4);
   transition: 0.3s;
   &:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgba(50, 50, 95,0.4);
   }
-  h2{
+  h2 {
     letter-spacing: 3px;
     font-weight: 600;
     text-transform: uppercase;
+    color: white;
   }
 }
 .profile-card {
-
+  background-color: #32325f;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(50, 50, 95,0.4);
   transition: 0.3s;
   &:hover {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(50, 50, 95,0.4);
   }
   .data-container {
     display: flex;
@@ -109,6 +110,7 @@ export default {
       padding: 5px;
       text-transform: capitalize;
       font-weight: 600;
+      color: rgb(244, 234, 253);
     }
     .data-col {
       display: flex;
@@ -117,12 +119,13 @@ export default {
         text-transform: capitalize;
         font-size: 18px;
         font-weight: 700;
+        color: white;
       }
       .value {
         padding-left: 5px;
         font-size: 18px;
         font-weight: 700;
-        color: rgba(0, 0, 0, 0.6);
+        color: rgb(244, 234, 253);
       }
     }
   }
