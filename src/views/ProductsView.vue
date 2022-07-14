@@ -7,7 +7,10 @@
           <ProductCard :cardData="card"></ProductCard>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
-          <div class="card">add product</div>
+          <div class="card add-product-card">
+            <span>add new product</span>
+            <font-awesome-icon icon="fa-solid fa-square-plus" size="6x" />
+          </div>
         </div>
       </div>
     </div>
@@ -29,20 +32,31 @@ export default {
     user: null,
   }),
   mounted() {
-    const loadProducts = async () => {
-      try {
-        const res = await productService.getAllProducts();
+    productService
+      .getAllProducts()
+      .then((res) => {
         this.productsList = res.data.data;
-      } catch (err) {
+      })
+      .catch((err) => {
         console.log(err);
-      }
-    };
-    loadProducts();
+      });
   },
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 .card {
-  height: 500px;
+  height: 400px;
+  &.add-product-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.fa-square-plus {
+  cursor: pointer;
+  &:hover {
+    color: #008080;
+  }
 }
 </style>
