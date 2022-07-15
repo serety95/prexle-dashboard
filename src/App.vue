@@ -1,20 +1,35 @@
 <template>
   <div id="app">
     <HeaderComponent></HeaderComponent>
-   <router-view v-slot="slotProps">
-    <transition name="route" mode="out-in">
-      <component :is="slotProps.Component"></component>
-    </transition>
-  </router-view>
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
   </div>
 </template>
 <script>
-import HeaderComponent from './components/HeaderComponent.vue'
+import HeaderComponent from "./components/HeaderComponent.vue";
 export default {
-components:{
-HeaderComponent
-}
-}
+  components: {
+    HeaderComponent,
+  },
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    },
+  },
+  created() {
+    this.$store.dispatch("tryLogin");
+  },
+  watch: {
+    didAutoLogout(curValue, oldValue) {
+      if (curValue && curValue !== oldValue) {
+        this.$router.replace("/coaches");
+      }
+    },
+  },
+};
 </script>
 <style lang="scss">
 #app {

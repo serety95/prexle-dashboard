@@ -54,7 +54,7 @@
 </template>
 <script>
 import { required, email } from "vuelidate/lib/validators";
-import userService from "../services/userService";
+
 export default {
   data() {
     return {
@@ -81,14 +81,21 @@ export default {
       } else {
         this.submitStatus = "PENDING";
         console.log(this.email, this.password);
-        const res = await userService.login({
-          email: this.email,
-          password: this.password,
-        });
-        console.log(res.data);
-        userService.setToken(res.data.data.token);
 
-        this.submitStatus = res.data.message;
+        const actionPayload = {
+        email: this.email,
+        password: this.password,
+      };
+      this.$store.dispatch('login', actionPayload)
+      this.$router.replace('/products');
+        // const res = await userService.login({
+        //   email: this.email,
+        //   password: this.password,
+        // });
+        // console.log(res.data);
+        // userService.setToken(res.data.data.token);
+
+        // this.submitStatus = res.data.message;
       }
     },
   },

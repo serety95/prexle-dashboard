@@ -5,6 +5,8 @@ import LoginView from '../views/LoginView.vue'
 import ProductsView from '../views/ProductsView.vue'
 import UserProfile from '../views/UserProfile.vue'
 import RegisterView from '../views/RegisterView.vue'
+import NotFoundView from '../views/NotFoundView.vue'
+import store from '../store/index';
 Vue.use(VueRouter)
 
 const routes = [
@@ -44,19 +46,20 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  { path: '/:notFound(.*)', component: NotFoundView }
 ]
-// router.beforeEach(function (to, _, next) {
-//   if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
-//     next('/auth');
-//   } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
-//     next('/coaches');
-//   } else {
-//     next();
-//   }
-// });
+
 const router = new VueRouter({
   routes
 })
-
+router.beforeEach(function (to, _, next) {
+  if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+    next('/login');
+  } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
+    next('/products');
+  } else {
+    next();
+  }
+});
 export default router

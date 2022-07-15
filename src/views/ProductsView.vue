@@ -1,7 +1,7 @@
 <template>
   <div class="products">
     <h1>welcome to products</h1>
-    <div class="container">
+    <div v-if="isLoggedIn" class="container">
       <div class="row">
         <div v-for="card in productsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
           <ProductCard :cardData="card"></ProductCard>
@@ -31,6 +31,11 @@ export default {
     productsList: [],
     user: null,
   }),
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
+  },
   mounted() {
     productService
       .getAllProducts()
