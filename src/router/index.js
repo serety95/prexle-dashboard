@@ -16,22 +16,26 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    component: LoginView
+    component: LoginView,
+    meta: { requiresUnauth: true }
   },
   {
     path: '/register',
     name: 'register',
-    component: RegisterView
+    component: RegisterView,
+    meta: { requiresUnauth: true }
   },
   {
     path: '/products',
     name: 'products',
-    component: ProductsView
+    component: ProductsView,
+    meta: { requiresAuth: true }
   },
   {
     path: '/profile',
     name: 'profile',
-    component: UserProfile
+    component: UserProfile,
+    meta: { requiresAuth: true }
   },
   {
     path: '/about',
@@ -42,7 +46,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   }
 ]
-
+// router.beforeEach(function (to, _, next) {
+//   if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+//     next('/auth');
+//   } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
+//     next('/coaches');
+//   } else {
+//     next();
+//   }
+// });
 const router = new VueRouter({
   routes
 })
