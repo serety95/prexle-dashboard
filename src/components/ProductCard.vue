@@ -14,19 +14,13 @@
   </b-card>
 </template>
 <script>
-
-
-
-
 export default {
   name: "ProductCard",
   props: {
     cardData: Object,
   },
 
-  mounted() {
-    console.log(this.cardData);
-  },
+  mounted() {},
   methods: {
     calcUpdatedDate(date) {
       let oldDate = new Date(date).getTime();
