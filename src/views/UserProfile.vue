@@ -53,7 +53,13 @@ export default {
       user: null,
     };
   },
+  computed: {
+    userInfo() {
+      return this.$store.getters.userData;
+    },
+  },
   mounted() {
+    console.log(this.$store.getters.userData);
     userService
       .getUserByToken()
       .then((res) => {
@@ -80,10 +86,10 @@ export default {
   overflow: hidden;
   margin-top: 20px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 4px 0 rgba(50, 50, 95,0.4);
+  box-shadow: 0 2px 4px 0 rgba(50, 50, 95, 0.4);
   transition: 0.3s;
   &:hover {
-    box-shadow: 0 4px 8px 0 rgba(50, 50, 95,0.4);
+    box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
   }
   h2 {
     letter-spacing: 3px;
@@ -96,10 +102,10 @@ export default {
   background-color: #32325f;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(50, 50, 95,0.4);
+  box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
   transition: 0.3s;
   &:hover {
-    box-shadow: 0 8px 16px 0 rgba(50, 50, 95,0.4);
+    box-shadow: 0 8px 16px 0 rgba(50, 50, 95, 0.4);
   }
   .data-container {
     display: flex;
