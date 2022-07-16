@@ -60,9 +60,7 @@ export default {
   logout(context) {
     localStorage.removeItem("token");
     localStorage.removeItem("tokenExpiration");
-
     clearTimeout(timer);
-
     context.commit("setUser", {
       token: null,
       userData: null,

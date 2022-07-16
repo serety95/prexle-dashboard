@@ -7,7 +7,6 @@
     <b-collapse class="" id="nav-collapse" is-nav>
       <b-navbar-nav>
         <b-nav-item to="/" exact>Home</b-nav-item>
-        <b-nav-item to="/about">About</b-nav-item>
         <b-nav-item to="/products">Products</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-0">
@@ -51,7 +50,7 @@ export default {
       selectedLang: selectedLang,
       langList: [
         { displayName: "English", value: "en" },
-        { displayName: "Arabic", value: "ar" },
+        { displayName: "عربي", value: "ar" },
       ],
       user: null,
     };

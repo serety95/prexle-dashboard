@@ -3,21 +3,20 @@
     <div class="login">
       <h1>welcome to login page</h1>
 
-     <form class="card p-3" @submit.prevent="submit">
+      <form class="card form-card p-3" @submit.prevent="submit">
         <b-container fluid="md" class="container">
           <b-row>
-
-            <b-col  cols="12">
+            <b-col cols="12">
               <div class="form-group">
                 <label for="">Email:</label>
                 <input required placeholder="enter your email" class="form-control" v-model.trim="email" type="email" />
-                <small class="form-text text-muted mr-2" v-if="!$v.email.required">Email is required</small>
-                <small class="form-text text-muted" v-if="!$v.email.email">please enter a valid email</small>
+                <small class="form-text mr-2" v-if="!$v.email.required">Email is required</small>
+                <small class="form-text" v-if="!$v.email.email">please enter a valid email</small>
               </div>
             </b-col>
           </b-row>
           <b-row>
-            <b-col  cols="12">
+            <b-col cols="12">
               <div class="form-group">
                 <label for="password">Password:</label>
                 <input
@@ -28,18 +27,15 @@
                   v-model.trim="password"
                   type="password"
                 />
-                <small class="form-text text-muted" v-if="!$v.password.required">password is required</small>
-                <small class="form-text text-muted" v-if="!$v.password.minLength">min length is 6 chars</small>
+                <small class="form-text" v-if="!$v.password.required">password is required</small>
+                <small class="form-text" v-if="!$v.password.minLength">min length is 6 chars</small>
               </div>
             </b-col>
-
           </b-row>
 
           <b-row class="mt-4">
             <b-col class="mx-auto" xl="6" lg="6" md="6" sm="12" cols="12">
-              <b-button class="w-100" type="submit" :disabled="$v.$invalid" variant="outline-primary"
-                >Login</b-button
-              >
+              <b-button class="w-100" type="submit" :disabled="$v.$invalid" variant="outline-primary">Login</b-button>
             </b-col>
           </b-row>
         </b-container>
@@ -82,11 +78,11 @@ export default {
         console.log(this.email, this.password);
 
         const actionPayload = {
-        email: this.email,
-        password: this.password,
-      };
-      this.$store.dispatch('login', actionPayload)
-      this.$router.push({ path: '/products' })
+          email: this.email,
+          password: this.password,
+        };
+        await this.$store.dispatch("login", actionPayload);
+        this.$router.push({ path: "/products" });
         // const res = await userService.login({
         //   email: this.email,
         //   password: this.password,
@@ -101,6 +97,33 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.form-card {
+  background-color: #32325f;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(50, 50, 95, 0.4);
+  }
+  color: white;
+  small {
+    color: rgb(244, 234, 253);
+  }
+  .btn-outline-primary {
+    font-weight: 700;
+    border-color: #6698ff !important;
+    color: white;
+    &:hover {
+      background-color: #6698ff !important;
+    }
+    &:active{
+      outline: none !important;
+
+    }
+  }
+}
+
 .form-group {
   text-align: start;
   small {
