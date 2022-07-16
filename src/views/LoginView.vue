@@ -111,6 +111,9 @@ export default {
     color: rgb(244, 234, 253);
   }
   .btn-outline-primary {
+    &:disabled{
+        cursor: not-allowed;
+    }
     font-weight: 700;
     border-color: #6698ff !important;
     color: white;

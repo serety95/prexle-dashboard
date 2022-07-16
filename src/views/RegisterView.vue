@@ -3,7 +3,7 @@
     <div class="register">
       <h1>Register new Account</h1>
 
-      <form class="card p-3" @submit.prevent="submit">
+      <form class="card form-card p-3" @submit.prevent="submit">
         <b-container fluid="md" class="container">
           <b-row>
             <b-col xl="6" lg="6" md="6" sm="12" cols="12">
@@ -161,6 +161,35 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.form-card {
+  background-color: #32325f;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(50, 50, 95, 0.4);
+  }
+  color: white;
+  small {
+    color: rgb(244, 234, 253);
+  }
+  .btn-outline-primary {
+    &:disabled{
+        cursor: not-allowed;
+    }
+    font-weight: 700;
+    border-color: #6698ff !important;
+    color: white;
+    &:hover {
+      background-color: #6698ff !important;
+    }
+    &:active{
+      outline: none !important;
+
+    }
+  }
+}
 .form-group {
   text-align: start;
   small {
