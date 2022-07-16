@@ -6,6 +6,7 @@ import ProductsView from '../views/ProductsView.vue'
 import UserProfile from '../views/UserProfile.vue'
 import RegisterView from '../views/RegisterView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
+import AddProductView from '../views/AddProductView.vue'
 import store from '../store/index';
 Vue.use(VueRouter)
 
@@ -31,7 +32,14 @@ const routes = [
     path: '/products',
     name: 'products',
     component: ProductsView,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true },
+    children: [
+      {
+        path: 'add',
+        component: AddProductView,
+      }
+
+    ]
   },
   {
     path: '/profile',

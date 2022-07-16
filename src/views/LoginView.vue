@@ -1,7 +1,7 @@
 <template>
   <b-container fluid="sm" class="px-5">
     <div class="login">
-      <h1>welcome to login page</h1>
+      <h1>User Login</h1>
 
       <form class="card form-card p-3" @submit.prevent="submit">
         <b-container fluid="md" class="container">
@@ -28,7 +28,6 @@
                   type="password"
                 />
                 <small class="form-text" v-if="!$v.password.required">password is required</small>
-                <small class="form-text" v-if="!$v.password.minLength">min length is 6 chars</small>
               </div>
             </b-col>
           </b-row>
@@ -41,8 +40,6 @@
         </b-container>
 
         <p class="typo__p" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
-        <p class="typo__p" v-if="submitStatus === 'PENDING'">Sending...</p>
-        <p>{{ submitStatus }}</p>
       </form>
     </div>
   </b-container>
@@ -68,20 +65,16 @@ export default {
     },
   },
   methods: {
-    async submit() {
-      console.log("submit!");
+     submit() {
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
       } else {
-        this.submitStatus = "PENDING";
-        console.log(this.email, this.password);
-
         const actionPayload = {
           email: this.email,
           password: this.password,
         };
-        await this.$store.dispatch("login", actionPayload);
+        this.$store.dispatch("login", actionPayload);
         this.$router.push({ path: "/products" });
         // const res = await userService.login({
         //   email: this.email,

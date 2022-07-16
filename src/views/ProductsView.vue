@@ -9,7 +9,7 @@
           <ProductCard :cardData="card"></ProductCard>
         </div>
         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
-          <div class="card add-product-card">
+          <div @click="addProduct" class="card add-product-card">
             <span>add new product</span>
             <font-awesome-icon icon="fa-solid fa-square-plus" size="6x" />
           </div>
@@ -23,6 +23,7 @@
 // @ is an alias to /src
 import ProductCard from "@/components/ProductCard.vue";
 import productService from "@/services/productService";
+
 export default {
   name: "ProductsView",
   components: { ProductCard },
@@ -51,6 +52,9 @@ export default {
   methods: {
     login(){
        this.$router.push({ path: '/login' })
+    },
+    addProduct(){
+        this.$router.push({ path: '/products/add' })
     }
   },
 };
