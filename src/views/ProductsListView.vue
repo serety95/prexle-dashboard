@@ -1,5 +1,5 @@
 <template>
-  <div class="products">
+  <section id="productsListPage">
     <h3>welcome to products List</h3>
     <div class="row">
       <div v-for="card in productsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -28,10 +28,8 @@ export default {
   },
   data: () => ({
     productsList: [],
-
   }),
-  computed: {
-  },
+  computed: {},
   mounted() {
     productService
       .getAllProducts()

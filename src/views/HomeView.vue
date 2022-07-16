@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <section id="homePage">
     <div class="container">
       <div class="row">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -29,7 +29,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.home {
+#homePage {
   background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
   height: calc(100vh - 66px);
   .container {

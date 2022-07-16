@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user" class="container px-5">
+  <section id="userProfilePage" v-if="user" class="container px-5">
     <div class="row welcome-card">
       <div class="col-12">
         <h2>welcome back {{ user.fullname }}</h2>
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import userService from "@/services/userService";

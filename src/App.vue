@@ -1,11 +1,9 @@
 <template>
   <div id="app">
     <HeaderComponent></HeaderComponent>
-    <router-view v-slot="slotProps">
-      <transition name="route" mode="out-in">
-        <component :is="slotProps.Component"></component>
-      </transition>
-    </router-view>
+    <transition name="route" enter-active-class="animate__animated animate__fadeInLeft" leave-active-class="animate__animated animate__fadeOutUp" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 <script>
@@ -32,13 +30,14 @@ export default {
 };
 </script>
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 #app {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
 }
 
 nav {

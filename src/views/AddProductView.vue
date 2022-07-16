@@ -1,14 +1,12 @@
 <template>
-  <div class="add-product">
+  <section id="addProductPage" class="add-product">
     <div class="container">
       <div class="col-12">
         <h3>add new product</h3>
       </div>
-      <form action="">
-        
-      </form>
+      <form action=""></form>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
