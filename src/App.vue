@@ -41,18 +41,25 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+
 }
-.nav-link.router-link-exact-active{
+.nav-link {
+  color: white !important;
+  &.router-link-exact-active {
     font-weight: 700;
-    color: white !important;
+
+  }
 }
 .dropdown-item.router-link-exact-active {
   background-color: #32325f;
   color: white;
   font-weight: 700;
 }
-
+.dropdown-item.active{
+  background-color: #32325f !important;
+  color: white;
+  font-weight: 700;
+}
 .page-title {
   background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
   border-radius: 15px;

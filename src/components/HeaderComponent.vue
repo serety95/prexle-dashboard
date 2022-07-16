@@ -1,5 +1,5 @@
 <template>
-  <b-navbar sticky toggleable="lg" type="dark" variant="info">
+  <b-navbar sticky toggleable="lg" >
     <b-navbar-brand href="#"
       ><img src="https://prexle.com/wp-content/themes/prexle/images/logo.svg" alt="" srcset=""
     /></b-navbar-brand>
@@ -71,6 +71,16 @@ export default {
 };
 </script>
 <style lang="scss">
+.navbar{
+
+  background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
+  .navbar-toggler {
+    border-color: white !important;
+    .navbar-toggler-icon {
+       filter: brightness(0) invert(1);
+    }
+}
+}
 .navbar-collapse{
   justify-content: space-between;
 }

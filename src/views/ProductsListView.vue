@@ -7,7 +7,7 @@
       <div v-for="card in productsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
         <ProductCard :cardData="card"></ProductCard>
       </div>
-      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-4">
         <div @click="addProduct" class="card add-product-card">
           <span>add new product</span>
           <font-awesome-icon icon="fa-solid fa-square-plus" size="6x" />
@@ -51,8 +51,14 @@ export default {
 </script>
 <style scoped lang="scss">
 .card {
-  height: 400px;
-  border: 2px solid #32325f77;
+  height: 380px;
+  border: none;
+  box-shadow: 0 2px 4px 0 rgba(50, 50, 95, 0.4);
+  transition: 0.3s;
+  border-radius: 20px;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
+  }
   &.add-product-card {
     display: flex;
     flex-direction: column;
