@@ -1,9 +1,12 @@
 <template>
   <section id="addProductPage" class="add-product">
-    <div class="container">
-      <div class="col-12">
-        <h3>add new product</h3>
+    <div class="container px-5">
+      <div class="row">
+        <div class="col-12">
+          <h3>add new product</h3>
+        </div>
       </div>
+
       <form action=""></form>
     </div>
   </section>
