@@ -5,34 +5,22 @@
     <button v-if="!isLoggedIn" @click="login">Login</button>
     <div v-if="isLoggedIn" class="container">
       <div class="row">
-        <div v-for="card in productsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
-          <ProductCard :cardData="card"></ProductCard>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
-          <div @click="addProduct" class="card add-product-card">
-            <span>add new product</span>
-            <font-awesome-icon icon="fa-solid fa-square-plus" size="6x" />
-          </div>
-        </div>
+        <router-view class="col-12"></router-view>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import ProductCard from "@/components/ProductCard.vue";
-import productService from "@/services/productService";
 
 export default {
   name: "ProductsView",
-  components: { ProductCard },
+
   props: {
     cardsList: Array,
   },
   data: () => ({
-    productsList: [],
-    user: null,
+
   }),
   computed: {
     isLoggedIn() {
@@ -40,39 +28,15 @@ export default {
     },
   },
   mounted() {
-    productService
-      .getAllProducts()
-      .then((res) => {
-        this.productsList = res.data.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
   },
   methods: {
-    login(){
-       this.$router.push({ path: '/login' })
+    login() {
+      this.$router.push({ path: "/login" });
     },
-    addProduct(){
-        this.$router.push({ name: 'addProduct' })
-    }
   },
 };
 </script>
 <style scoped lang="scss">
-.card {
-  height: 400px;
-  &.add-product-card{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-.fa-square-plus {
-  cursor: pointer;
-  &:hover {
-    color: #008080;
-  }
-}
+
 </style>

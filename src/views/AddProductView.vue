@@ -1,7 +1,12 @@
 <template>
   <div class="add-product">
     <div class="container">
-      <form action=""></form>
+      <div class="col-12">
+        <h3>add new product</h3>
+      </div>
+      <form action="">
+        
+      </form>
     </div>
   </div>
 </template>
@@ -15,6 +20,7 @@ export default {
 <style scoped lang="scss">
 .add-product {
   background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
-  height: calc(100vh - 66px);
+  border-radius: 15px;
+  min-height: 85vh;
 }
 </style>

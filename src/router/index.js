@@ -7,6 +7,7 @@ import UserProfile from '../views/UserProfile.vue'
 import RegisterView from '../views/RegisterView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import AddProductView from '../views/AddProductView.vue'
+import ProductsListView from '../views/ProductsListView.vue'
 import store from '../store/index';
 Vue.use(VueRouter)
 
@@ -38,7 +39,13 @@ const routes = [
         path: 'add',
         name: 'addProduct',
         component: AddProductView,
+      },
+      {
+        path: '',
+        name: 'productsList',
+        component: ProductsListView,
       }
+      
 
     ]
   },

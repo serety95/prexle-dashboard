@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 export default {
 
     login(data) {
-        console.log(data)
         return API().post('/login', { email: data.email, password: data.password })
     },
     setToken(token) {

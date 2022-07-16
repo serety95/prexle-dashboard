@@ -65,7 +65,7 @@ export default {
     },
   },
   methods: {
-     submit() {
+    submit() {
       this.$v.$touch();
       if (this.$v.$invalid) {
         this.submitStatus = "ERROR";
@@ -74,16 +74,9 @@ export default {
           email: this.email,
           password: this.password,
         };
-        this.$store.dispatch("login", actionPayload);
-        this.$router.push({ path: "/products" });
-        // const res = await userService.login({
-        //   email: this.email,
-        //   password: this.password,
-        // });
-        // console.log(res.data);
-        // userService.setToken(res.data.data.token);
-
-        // this.submitStatus = res.data.message;
+        this.$store.dispatch("login", actionPayload).then(() => {
+          this.$router.push({ path: "/products" });
+        });
       }
     },
   },
@@ -104,8 +97,8 @@ export default {
     color: rgb(244, 234, 253);
   }
   .btn-outline-primary {
-    &:disabled{
-        cursor: not-allowed;
+    &:disabled {
+      cursor: not-allowed;
     }
     font-weight: 700;
     border-color: #6698ff !important;
@@ -113,9 +106,8 @@ export default {
     &:hover {
       background-color: #6698ff !important;
     }
-    &:active{
+    &:active {
       outline: none !important;
-
     }
   }
 }

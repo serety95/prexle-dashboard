@@ -1,7 +1,7 @@
 let timer;
 import userService from "@/services/userService";
 export default {
-  login(context, payload) {
+  async login(context, payload) {
     userService
       .login({
         email: payload.email,
