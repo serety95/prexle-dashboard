@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <HeaderComponent></HeaderComponent>
-    <transition name="route" enter-active-class="animate__animated animate__fadeInLeft" leave-active-class="animate__animated animate__fadeOutUp" mode="out-in">
+    <transition
+      name="route"
+      enter-active-class="animate__animated animate__fadeInLeft"
+      leave-active-class="animate__animated animate__fadeOutUp"
+      mode="out-in"
+    >
       <router-view></router-view>
     </transition>
   </div>
@@ -23,7 +28,7 @@ export default {
   watch: {
     didAutoLogout(curValue, oldValue) {
       if (curValue && curValue !== oldValue) {
-        this.$router.replace("/coaches");
+        this.$router.replace("/products");
       }
     },
   },
@@ -37,43 +42,75 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
+}
+.nav-link.router-link-exact-active{
+    font-weight: 700;
+    color: white !important;
+}
+.dropdown-item.router-link-exact-active {
+  background-color: #32325f;
+  color: white;
+  font-weight: 700;
 }
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #058f88;
-      font-weight: 700;
-    }
+.page-title {
+  background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
+  border-radius: 15px;
+  padding: 15px;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 4px 0 rgba(50, 50, 95, 0.4);
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
+  }
+  h2 {
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
   }
 }
-.route-enter-from {
-  opacity: 0;
-  transform: translateY(-30px);
+.btn-outline-primary {
+  &:disabled {
+    cursor: not-allowed;
+  }
+  font-weight: 700 !important;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  border-color: #6698ff !important;
+  color: white !important;
+  &:hover {
+    background-color: #6698ff !important;
+  }
+  &:active {
+    outline: none !important;
+  }
 }
-
-.route-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.route-enter-active {
-  transition: all 0.3s ease-out;
-}
-
-.route-leave-active {
-  transition: all 0.3s ease-in;
-}
-
-.route-enter-to,
-.route-leave-from {
-  opacity: 1;
-  transform: translateY(0);
+.form-card {
+  padding: 30px 20px;
+  background-color: #32325f !important;
+  border-radius: 15px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4) !important;
+  transition: 0.3s;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(50, 50, 95, 0.4) !important;
+  }
+  color: white;
+  .form-group {
+    text-align: start !important;
+    label {
+      color: white !important;
+      font-weight: 700 !important;
+      text-transform: capitalize !important;
+    }
+    small {
+      padding-right: 5px !important;
+      color: rgb(244, 234, 253) !important;
+    }
+  }
 }
 </style>

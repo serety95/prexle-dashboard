@@ -2,9 +2,10 @@
   <section id="loginPage">
     <b-container fluid="sm" class="px-5">
       <div class="login">
-        <h1>User Login</h1>
-
-        <form class="card form-card p-3" @submit.prevent="submit">
+        <div class="page-title">
+          <h2>User Login</h2>
+        </div>
+        <form class="form-card" @submit.prevent="submit">
           <b-container fluid="md" class="container">
             <b-row>
               <b-col cols="12">
@@ -91,39 +92,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.form-card {
-  background-color: #32325f;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
-  transition: 0.3s;
-  &:hover {
-    box-shadow: 0 8px 16px 0 rgba(50, 50, 95, 0.4);
-  }
-  color: white;
-  small {
-    color: rgb(244, 234, 253);
-  }
-  .btn-outline-primary {
-    &:disabled {
-      cursor: not-allowed;
-    }
-    font-weight: 700;
-    border-color: #6698ff !important;
-    color: white;
-    &:hover {
-      background-color: #6698ff !important;
-    }
-    &:active {
-      outline: none !important;
-    }
-  }
-}
 
-.form-group {
-  text-align: start;
-  small {
-    padding-right: 5px;
-  }
-}
 </style>

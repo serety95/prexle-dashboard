@@ -1,16 +1,23 @@
 <template>
-    <section id="productsPage">
-      <h1>welcome to products</h1>
-      <h3 v-if="!isLoggedIn">please login in to view products</h3>
-      <button v-if="!isLoggedIn" @click="login">Login</button>
-      <div v-if="isLoggedIn" class="container">
-        <div class="row">
-          <transition name="router-anim"  enter-active-class="animate__animated animate__fadeInLeft" leave-active-class="animate__animated animate__fadeOutRight" mode="out-in">
-            <router-view class="col-12"></router-view>
-          </transition>
-        </div>
+  <section id="productsPage">
+    <div class="container">
+      <div v-if="!isLoggedIn" class="page-title">
+        <h2>please login in to view products</h2>
+        <button class="btn btn-outline-primary my-4" v-if="!isLoggedIn" @click="login">Login</button>
       </div>
-    </section>
+
+      <div v-if="isLoggedIn" class="row">
+        <transition
+          name="router-anim"
+          enter-active-class="animate__animated animate__fadeInLeft"
+          leave-active-class="animate__animated animate__fadeOutRight"
+          mode="out-in"
+        >
+          <router-view class="col-12"></router-view>
+        </transition>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -36,7 +43,7 @@ export default {
 </script>
 <style scoped lang="scss">
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
-#productsPage{
+#productsPage {
   overflow: hidden;
 }
 </style>

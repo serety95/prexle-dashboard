@@ -9,8 +9,8 @@
         <b-nav-item to="/" exact>Home</b-nav-item>
         <b-nav-item to="/products">Products</b-nav-item>
       </b-navbar-nav>
-      <b-navbar-nav class="ml-0">
-        <b-nav-item-dropdown :text="user == null ? 'user' : user.fullname">
+      <b-navbar-nav  class="ml-0">
+        <b-nav-item-dropdown right :text="user == null ? 'user' : user.fullname">
           <b-dropdown-item v-if="!isLoggedIn" to="/login">Login</b-dropdown-item>
           <b-dropdown-item v-if="!isLoggedIn" to="/register">Register</b-dropdown-item>
           <b-dropdown-item v-if="isLoggedIn" to="/profile">Profile</b-dropdown-item>
@@ -32,9 +32,7 @@
 </template>
 <script>
 export default {
-   mounted() {
-
-  },
+  mounted() {},
   name: "HeaderComponent",
   computed: {
     isLoggedIn() {
@@ -66,13 +64,16 @@ export default {
     },
   },
   watch: {
-    userInfo(newValue){
-      this.user=newValue
-    }
+    userInfo(newValue) {
+      this.user = newValue;
+    },
   },
 };
 </script>
 <style lang="scss">
+.navbar-collapse{
+  justify-content: space-between;
+}
 .nav-link.router-link-active {
   color: white !important;
 }

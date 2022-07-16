@@ -1,6 +1,8 @@
 <template>
   <section id="productsListPage">
-    <h3>welcome to products List</h3>
+    <div class="page-title">
+      <h2>products List</h2>
+    </div>
     <div class="row">
       <div v-for="card in productsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
         <ProductCard :cardData="card"></ProductCard>
@@ -50,6 +52,7 @@ export default {
 <style scoped lang="scss">
 .card {
   height: 400px;
+  border: 2px solid #32325f77;
   &.add-product-card {
     display: flex;
     flex-direction: column;
@@ -59,8 +62,10 @@ export default {
 }
 .fa-square-plus {
   cursor: pointer;
+  color: #32325f;
+  opacity: 0.7;
   &:hover {
-    color: #008080;
+    opacity: 1;
   }
 }
 </style>

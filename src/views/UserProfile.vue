@@ -1,6 +1,6 @@
 <template>
   <section id="userProfilePage" v-if="user" class="container px-5">
-    <div class="row welcome-card">
+    <div class="row page-title">
       <div class="col-12">
         <h2>welcome back {{ user.fullname }}</h2>
       </div>
@@ -79,25 +79,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.welcome-card {
-  background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
-  border-radius: 15px;
-  padding: 15px;
-  overflow: hidden;
-  margin-top: 20px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 4px 0 rgba(50, 50, 95, 0.4);
-  transition: 0.3s;
-  &:hover {
-    box-shadow: 0 4px 8px 0 rgba(50, 50, 95, 0.4);
-  }
-  h2 {
-    letter-spacing: 3px;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: white;
-  }
-}
+
 .profile-card {
   background-color: #32325f;
   border-radius: 15px;
