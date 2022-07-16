@@ -5,7 +5,13 @@
     <button v-if="!isLoggedIn" @click="login">Login</button>
     <div v-if="isLoggedIn" class="container">
       <div class="row">
-        <router-view class="col-12"></router-view>
+
+        <router-view v-slot="{Component}" class="col-12">
+        <transition name="slide" mode="out-in">
+          <component :is="Component" :key="$route.path"></component>
+        </transition>
+
+        </router-view>
       </div>
     </div>
   </div>
@@ -38,5 +44,18 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-
+.slide-enter-active{
+  transition:opacity 1s , transform 1s;
+}
+.slide-leave-active{
+  transition:opacity 1s , transform 1s;
+}
+.slide-enter-from{
+  opacity: 0;
+  transform: translateX(-30%);
+}
+.slide-leave-to{
+  opacity: 0;
+  transform: translateX(-30%);
+}
 </style>
