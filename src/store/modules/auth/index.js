@@ -5,7 +5,7 @@ import getters from './getters.js';
 export default {
     state() {
         return {
-            userId: null,
+            userData: null,
             token: null,
             didAutoLogout: false
         };

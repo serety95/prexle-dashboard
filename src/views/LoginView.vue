@@ -3,52 +3,51 @@
     <div class="login">
       <h1>welcome to login page</h1>
 
-      <b-form @submit.prevent="submit">
-        <b-row>
-          <b-form-group
-            class="col-12 d-flex justify-content-center flex-column align-items-start"
-            :class="{ 'form-group--error': $v.email.$error }"
-            id="input-group-1"
-            label="Email address:"
-            label-for="input-1"
-            ><b-form-input
-              id="input-1"
-              type="email"
-              required
-              placeholder="Enter your Email"
-              v-model.trim="$v.email.$model"
-            ></b-form-input>
-            <div class="error" v-if="!$v.email.required">Email is required</div>
-            <div class="error" v-if="!$v.email.email">please enter a valid email</div>
-          </b-form-group>
-        </b-row>
-        <b-row>
-          <b-form-group
-            :class="{ 'form-group--error': $v.password.$error }"
-            id="input-group-2"
-            label="password:"
-            label-for="input-2"
-            ><b-form-input
-              id="input-2"
-              type="password"
-              required
-              placeholder="Enter your password"
-              v-model.trim="$v.password.$model"
-            ></b-form-input>
-            <div class="error" v-if="!$v.email.required">password is required</div>
-          </b-form-group>
-        </b-row>
-        <b-button
-          type="submit"
-          :disabled="$v.$invalid"
-          variant="outline-primary"
-          >Login</b-button
-        >
+     <form class="card p-3" @submit.prevent="submit">
+        <b-container fluid="md" class="container">
+          <b-row>
+
+            <b-col  cols="12">
+              <div class="form-group">
+                <label for="">Email:</label>
+                <input required placeholder="enter your email" class="form-control" v-model.trim="email" type="email" />
+                <small class="form-text text-muted mr-2" v-if="!$v.email.required">Email is required</small>
+                <small class="form-text text-muted" v-if="!$v.email.email">please enter a valid email</small>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col  cols="12">
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input
+                  id="password"
+                  required
+                  placeholder="enter your password"
+                  class="form-control"
+                  v-model.trim="password"
+                  type="password"
+                />
+                <small class="form-text text-muted" v-if="!$v.password.required">password is required</small>
+                <small class="form-text text-muted" v-if="!$v.password.minLength">min length is 6 chars</small>
+              </div>
+            </b-col>
+
+          </b-row>
+
+          <b-row class="mt-4">
+            <b-col class="mx-auto" xl="6" lg="6" md="6" sm="12" cols="12">
+              <b-button class="w-100" type="submit" :disabled="$v.$invalid" variant="outline-primary"
+                >Login</b-button
+              >
+            </b-col>
+          </b-row>
+        </b-container>
 
         <p class="typo__p" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
         <p class="typo__p" v-if="submitStatus === 'PENDING'">Sending...</p>
         <p>{{ submitStatus }}</p>
-      </b-form>
+      </form>
     </div>
   </b-container>
 </template>
@@ -87,7 +86,7 @@ export default {
         password: this.password,
       };
       this.$store.dispatch('login', actionPayload)
-      this.$router.replace('/products');
+      this.$router.push({ path: '/products' })
         // const res = await userService.login({
         //   email: this.email,
         //   password: this.password,
@@ -101,3 +100,11 @@ export default {
   },
 };
 </script>
+<style scoped lang="scss">
+.form-group {
+  text-align: start;
+  small {
+    padding-right: 5px;
+  }
+}
+</style>

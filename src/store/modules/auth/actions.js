@@ -10,31 +10,32 @@ export default {
 
             const expiresIn = 3600 * 1000;
             const expirationDate = new Date().getTime() + expiresIn;
-
-            localStorage.setItem('token', res.data.data.token);
-            // localStorage.setItem('userId', responseData.localId);
+            const userToken = res.data.data.token
+            localStorage.setItem('token', userToken);
             localStorage.setItem('tokenExpiration', expirationDate);
 
             timer = setTimeout(function () {
                 context.dispatch('autoLogout');
             }, expiresIn);
 
-            context.commit('setUser', {
-                token: res.data.data.token,
-                userId: null
-            });
+            userService.getUserByToken().then((res) => {
 
-            console.log(res)
+                context.commit('setUser', {
+                    token: userToken,
+                    userData: res.data.data
+                });
+            })
+
+
+
+
         })
-        .catch((err) => {
-            const error = new Error(
-                err.message || 'Failed to authenticate. Check your login data.'
-            );
-            throw error;
-        }).finally(()=>{
-            console.log('finally')
-            this.$router.replace('/products');
-        })
+            .catch((err) => {
+                const error = new Error(
+                    err.message || 'Failed to authenticate. Check your login data.'
+                );
+                throw error;
+            })
     },
     async signup(context, payload) {
         return context.dispatch('auth', {

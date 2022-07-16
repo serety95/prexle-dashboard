@@ -11,11 +11,11 @@
         <b-nav-item to="/products">Products</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-0">
-        <b-nav-item-dropdown :text="user == null ? 'user' : user">
-          <b-dropdown-item v-if="!user" to="/login">Login</b-dropdown-item>
-          <b-dropdown-item v-if="!user" to="/register">Register</b-dropdown-item>
-          <b-dropdown-item v-if="user" to="/profile">Profile</b-dropdown-item>
-          <b-dropdown-item v-if="user" @click="logout()">Logout</b-dropdown-item>
+        <b-nav-item-dropdown :text="user == null ? 'user' : user.fullname">
+          <b-dropdown-item v-if="!isLoggedIn" to="/login">Login</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" to="/register">Register</b-dropdown-item>
+          <b-dropdown-item v-if="isLoggedIn" to="/profile">Profile</b-dropdown-item>
+          <b-dropdown-item v-if="isLoggedIn" @click="logout()">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
         <b-nav-item-dropdown right :text="selectedLang">
           <b-dropdown-item
@@ -32,20 +32,19 @@
   </b-navbar>
 </template>
 <script>
-import userService from "@/services/userService";
 export default {
-  async mounted() {
-    console.log(`the component is now mounted.`);
-    userService
-      .getUserByToken()
-      .then((res) => {
-        this.user = res.data.data.fullname;
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+   mounted() {
+
   },
   name: "HeaderComponent",
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
+    userInfo() {
+      return this.$store.getters.userData;
+    },
+  },
   data: function () {
     const selectedLang = localStorage.getItem("lang") || "en";
     return {
@@ -63,9 +62,14 @@ export default {
       localStorage.setItem("lang", lang.value);
     },
     logout() {
+      this.$store.dispatch("logout");
       this.user = null;
-      localStorage.removeItem("token");
     },
+  },
+  watch: {
+    userInfo(newValue){
+      this.user=newValue
+    }
   },
 };
 </script>

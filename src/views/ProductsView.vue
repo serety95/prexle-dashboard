@@ -1,6 +1,8 @@
 <template>
   <div class="products">
     <h1>welcome to products</h1>
+    <h3 v-if="!isLoggedIn">please login in to view products</h3>
+    <button v-if="!isLoggedIn" @click="login">Login</button>
     <div v-if="isLoggedIn" class="container">
       <div class="row">
         <div v-for="card in productsList" v-bind:key="card._id" class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 my-2">
@@ -45,6 +47,11 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+  },
+  methods: {
+    login(){
+       this.$router.push({ path: '/login' })
+    }
   },
 };
 </script>
