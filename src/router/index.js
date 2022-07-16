@@ -36,6 +36,7 @@ const routes = [
     children: [
       {
         path: 'add',
+        name: 'addProduct',
         component: AddProductView,
       }
 

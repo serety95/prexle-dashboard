@@ -54,7 +54,7 @@ export default {
        this.$router.push({ path: '/login' })
     },
     addProduct(){
-        this.$router.push({ path: '/products/add' })
+        this.$router.push({ name: 'addProduct' })
     }
   },
 };
