@@ -3,7 +3,7 @@
     <b-container fluid="sm" class="px-5">
       <div class="register">
         <div class="page-title">
-          <h2>Register new Account</h2>
+          <h2>{{$t('Register new Account')}}</h2>
         </div>
 
         <form class="form-card" @submit.prevent="submit">
@@ -25,7 +25,7 @@
               </b-col>
               <b-col xl="6" lg="6" md="6" sm="12" cols="12">
                 <div class="form-group">
-                  <label for="">Email:</label>
+                  <label for="">{{$t("email")}}</label>
                   <input
                     required
                     placeholder="enter your email"

@@ -6,13 +6,13 @@
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse class="" id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item to="/" exact>Home</b-nav-item>
-        <b-nav-item to="/products">Products</b-nav-item>
+        <b-nav-item to="/" exact>{{$t('home')}}</b-nav-item>
+        <b-nav-item to="/products">{{$t('Products')}}</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav  class="ml-0">
         <b-nav-item-dropdown right :text="user == null ? 'user' : user.fullname">
-          <b-dropdown-item v-if="!isLoggedIn" to="/login">Login</b-dropdown-item>
-          <b-dropdown-item v-if="!isLoggedIn" to="/register">Register</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" to="/login">{{$t('login')}}</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" to="/register">{{$t('register')}}</b-dropdown-item>
           <b-dropdown-item v-if="isLoggedIn" to="/profile">Profile</b-dropdown-item>
           <b-dropdown-item v-if="isLoggedIn" @click="logout()">Logout</b-dropdown-item>
         </b-nav-item-dropdown>

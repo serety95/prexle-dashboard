@@ -36,18 +36,23 @@ export default {
 </script>
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+html:lang(ar) * {
+
+  .form-group {
+    text-align: end !important;
+  }
+ 
+}
 #app {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-
 }
 .nav-link {
   color: white !important;
   &.router-link-exact-active {
     font-weight: 700;
-
   }
 }
 .dropdown-item.router-link-exact-active {
@@ -55,7 +60,7 @@ export default {
   color: white;
   font-weight: 700;
 }
-.dropdown-item.active{
+.dropdown-item.active {
   background-color: #32325f !important;
   color: white;
   font-weight: 700;

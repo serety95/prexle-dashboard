@@ -2,8 +2,8 @@
   <section id="productsPage">
     <div class="container px-5">
       <div v-if="!isLoggedIn" class="page-title">
-        <h2>please login in to view products</h2>
-        <button class="btn btn-outline-primary my-4" v-if="!isLoggedIn" @click="login">Login</button>
+        <h2>{{$t('please login in to view products')}}</h2>
+        <button class="btn btn-outline-primary my-4" v-if="!isLoggedIn" @click="login">{{$t('login')}}</button>
       </div>
 
       <div v-if="isLoggedIn" class="row">
