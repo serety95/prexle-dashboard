@@ -89,6 +89,11 @@
                 </b-form-group>
               </b-col>
             </b-row>
+             <b-row class="mt-4">
+              <b-col cols="12">
+                <span>if you already have an account please <strong class="login-link" @click="login" >login</strong></span>
+              </b-col>
+            </b-row>
             <b-row class="mt-4">
               <b-col class="mx-auto" xl="6" lg="6" md="6" sm="12" cols="12">
                 <b-button class="w-100" type="submit" :disabled="$v.$invalid" variant="outline-primary"
@@ -153,8 +158,6 @@ export default {
         this.submitStatus = "ERROR";
       } else {
         this.submitStatus = "PENDING";
-        console.log(this.$v);
-        console.log(this.email, this.password, this.fullname, this.gender);
         userService
           .registerUser({ email: this.email, password: this.password, fullname: this.fullname, gender: this.gender })
           .then((res) => {
@@ -166,10 +169,17 @@ export default {
           });
       }
     },
+     login(){
+      this.$router.push({ path: "/login" });
+    }
   },
 };
 </script>
 <style scoped lang="scss">
-
+.login-link{
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+}
 
 </style>

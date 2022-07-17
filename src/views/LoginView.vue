@@ -39,7 +39,11 @@
                 </div>
               </b-col>
             </b-row>
-
+            <b-row class="mt-4">
+              <b-col cols="12">
+                <span>if you don't have account please <strong class="register-link" @click="register" >register</strong></span>
+              </b-col>
+            </b-row>
             <b-row class="mt-4">
               <b-col class="mx-auto" xl="6" lg="6" md="6" sm="12" cols="12">
                 <b-button class="w-100" type="submit" :disabled="$v.$invalid" variant="outline-primary">Login</b-button>
@@ -88,9 +92,16 @@ export default {
         });
       }
     },
+    register(){
+      this.$router.push({ path: "/register" });
+    }
   },
 };
 </script>
 <style scoped lang="scss">
-
+.register-link{
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+}
 </style>
