@@ -11,7 +11,7 @@
             <b-row>
               <b-col xl="6" lg="6" md="6" sm="12" cols="12">
                 <div class="form-group">
-                  <label for="">fullname:</label>
+                  <label for="">{{$t('fullname')}}</label>
                   <input
                     required
                     placeholder="enter your name"
