@@ -59,16 +59,19 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$store.getters.userData);
-    userService
-      .getUserByToken()
-      .then((res) => {
-        this.user = res.data.data;
-        console.log(this.user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (!this.userInfo) {
+      userService
+        .getUserByToken()
+        .then((res) => {
+          this.user = res.data.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      this.user = this.userInfo;
+    }
+    console.log(this.user);
   },
   methods: {
     formatDate(date) {
@@ -79,7 +82,6 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-
 .profile-card {
   background-color: #32325f;
   border-radius: 15px;
