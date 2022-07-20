@@ -3,7 +3,7 @@
     <b-container fluid="sm" class="px-5">
       <div class="login">
         <div class="page-title">
-          <h2>User Login</h2>
+          <h2>{{$t("user login")}}</h2>
         </div>
         <form class="form-card" @submit.prevent="submit">
           <b-container fluid="md" class="container">
