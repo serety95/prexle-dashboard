@@ -35,13 +35,14 @@ export default {
 };
 </script>
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
 html:lang(ar) * {
-
+font-family: 'Cairo', sans-serif !important;
+letter-spacing: 0px !important;
   .form-group {
     text-align: end !important;
   }
- 
+
 }
 #app {
   font-family: "Roboto", sans-serif;

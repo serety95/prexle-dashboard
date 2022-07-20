@@ -10,7 +10,7 @@
             <b-row>
               <b-col cols="12">
                 <div class="form-group">
-                  <label for="">Email:</label>
+                  <label for="">{{$t("email")}}</label>
                   <input
                     required
                     placeholder="enter your email"
@@ -26,7 +26,7 @@
             <b-row>
               <b-col cols="12">
                 <div class="form-group">
-                  <label for="password">Password:</label>
+                  <label for="password">{{$t("password")}}</label>
                   <input
                     id="password"
                     required
