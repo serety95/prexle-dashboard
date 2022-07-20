@@ -1,18 +1,18 @@
 <template>
-  <b-navbar sticky toggleable="lg" >
+  <b-navbar sticky toggleable="lg">
     <b-navbar-brand href="#"
       ><img src="https://prexle.com/wp-content/themes/prexle/images/logo.svg" alt="" srcset=""
     /></b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse class="" id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item to="/" exact>{{$t('home')}}</b-nav-item>
-        <b-nav-item to="/products">{{$t('Products')}}</b-nav-item>
+        <b-nav-item to="/" exact>{{ $t("home") }}</b-nav-item>
+        <b-nav-item to="/products">{{ $t("Products") }}</b-nav-item>
       </b-navbar-nav>
-      <b-navbar-nav  class="ml-0">
+      <b-navbar-nav class="ml-0">
         <b-nav-item-dropdown right :text="user == null ? 'user' : user.fullname">
-          <b-dropdown-item v-if="!isLoggedIn" to="/login">{{$t('login')}}</b-dropdown-item>
-          <b-dropdown-item v-if="!isLoggedIn" to="/register">{{$t('register')}}</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" to="/login">{{ $t("login") }}</b-dropdown-item>
+          <b-dropdown-item v-if="!isLoggedIn" to="/register">{{ $t("register") }}</b-dropdown-item>
           <b-dropdown-item v-if="isLoggedIn" to="/profile">Profile</b-dropdown-item>
           <b-dropdown-item v-if="isLoggedIn" @click="logout()">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
@@ -56,7 +56,7 @@ export default {
   methods: {
     changeLang(lang) {
       this.selectedLang = lang.value;
-      localStorage.setItem("lang", lang.value);
+      this.$store.dispatch("updateLocale", lang.value);
     },
     logout() {
       this.$store.dispatch("logout");
@@ -71,17 +71,16 @@ export default {
 };
 </script>
 <style lang="scss">
-.navbar{
-
+.navbar {
   background: linear-gradient(to right, #32325f 0%, #4989f5 100%);
   .navbar-toggler {
     border-color: white !important;
     .navbar-toggler-icon {
-       filter: brightness(0) invert(1);
+      filter: brightness(0) invert(1);
     }
+  }
 }
-}
-.navbar-collapse{
+.navbar-collapse {
   justify-content: space-between;
 }
 .nav-link.router-link-active {
